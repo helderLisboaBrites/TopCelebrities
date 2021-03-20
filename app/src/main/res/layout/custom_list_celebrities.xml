@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:layout_gravity="center|top"
+    android:gravity="center|top">
+
+    <ImageView
+        android:id="@+id/ivCelebImage"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/leonardo_di_caprio"
+        >
+    </ImageView>
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/fname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:textSize="20sp"
+        android:text="Leonardo"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/lname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:textSize="20sp"
+        android:text="DiCaprio">
+
+    </TextView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
