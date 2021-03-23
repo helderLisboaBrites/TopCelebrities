@@ -3,7 +3,7 @@ package com.example.topcelebritieslistview;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-class Celebrity implements Parcelable {
+public class Celebrity implements Parcelable {
     private long id;
     private String aName;
     private String aLastName;

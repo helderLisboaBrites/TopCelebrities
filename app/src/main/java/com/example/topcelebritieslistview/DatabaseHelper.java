@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase database;
 
@@ -26,8 +26,8 @@ class DatabaseHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "Celebrities.DB";
     static final int DB_VERSION = 1;
 
-    private static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + "(" + _ID
-            +" INTEGER PRIMARY KEY AUTOINCREMENT, " + FIRST_NAME + " TEXT NOT NULL, "+ LAST_NAME +
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ( " + _ID
+            +" INTEGER PRIMARY KEY AUTOINCREMENT , " + FIRST_NAME + " TEXT NOT NULL, "+ LAST_NAME +
             " TEXT NOT NULL, " + DATE + " TEXT);";
 
     public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -71,5 +71,14 @@ class DatabaseHelper extends SQLiteOpenHelper {
         String[] projection = {_ID,FIRST_NAME,LAST_NAME,DATE};
         Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
         return cursor;
+    }
+
+    public int update(Celebrity pCelebrity) {
+        long _id= pCelebrity.getId();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(FIRST_NAME, pCelebrity.getName());
+        contentValues.put(LAST_NAME,pCelebrity.getLastName());
+        contentValues.put(DATE, pCelebrity.getDate());
+        return database.update(TABLE_NAME, contentValues, _ID + " = " + _id, null);
     }
 }

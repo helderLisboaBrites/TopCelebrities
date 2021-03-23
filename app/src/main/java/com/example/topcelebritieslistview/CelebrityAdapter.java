@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-class CelebrityAdapter extends ArrayAdapter<Celebrity> {
+public class CelebrityAdapter extends ArrayAdapter<Celebrity> {
 
 
     public CelebrityAdapter(@NonNull Context context, int resource, @NonNull List<Celebrity> celebrity) {
@@ -32,11 +32,13 @@ class CelebrityAdapter extends ArrayAdapter<Celebrity> {
         ImageView imageView = (ImageView) view.findViewById(R.id.ivCelebImage);
         TextView fname = (TextView) view.findViewById(R.id.fname);
         TextView lname = (TextView) view.findViewById(R.id.lname);
+        TextView birthDate  = (TextView) view.findViewById(R.id.birthDate);
 
         Celebrity celebrity = getItem(position);
         fname.setText(celebrity.getName());
         lname.setText(celebrity.getLastName());
-        imageView.setImageResource(celebrity.getImageRes());
+        //imageView.setImageResource(celebrity.getImageRes());
+        imageView.setImageResource(R.drawable.leonardo_di_caprio);
 
         return view;
     }

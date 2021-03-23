@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -48,7 +49,18 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,"Item selected :"+position,Toast.LENGTH_SHORT).show();
+                String _id= ((TextView)view.findViewById(R.id.tvId)).getText().toString();
+                String fname= ((TextView)view.findViewById(R.id.tvfname)).getText().toString();
+                String lname= ((TextView)view.findViewById(R.id.tvlname)).getText().toString();
+                String dateItem= ((TextView)view.findViewById(R.id.tvDate)).getText().toString();
+
+                Celebrity pCelebrity= new Celebrity(Long.parseLong(_id),fname,lname,dateItem);
+                Intent intent = new Intent(getApplicationContext(), CelebrityDetailsActivity.class);
+                intent.putExtra("SelectedCelebrity",pCelebrity);
+
+
+                intent.putExtra("fromAdd",false);
+                startActivity(intent);
 
             }
         });
@@ -68,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.add_celebrity: {
                 Intent intent = new Intent(this, CelebrityDetailsActivity.class);
+                intent.putExtra("fromAdd",true);
                 startActivity(intent);
                 return true;
             }
